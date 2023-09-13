@@ -12,7 +12,8 @@ return new class extends Migration
   public function up(): void
   {
     Schema::create('user', function (Blueprint $table) {
-      $table->string('email')->primary();
+      $table->id();
+      $table->string('email');
       $table->string('person_cedula', 20);
       $table->foreign('person_cedula')->references('person_cedula')->on('person')->onUpdate('cascade')->onDelete('cascade');
       $table->string('rol_name', 20);

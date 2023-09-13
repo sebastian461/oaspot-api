@@ -34,7 +34,7 @@ class Application extends Model
    */
   protected $fillable = [
     'parking_id',
-    'email',
+    'user_id',
     'application_status'
   ];
 
@@ -52,7 +52,7 @@ class Application extends Model
 
   public function user(): BelongsTo
   {
-    return $this->belongsTo(Parking::class, 'email');
+    return $this->belongsTo(Parking::class, 'user_id');
   }
 
   public function document(): HasMany

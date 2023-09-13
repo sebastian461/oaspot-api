@@ -15,27 +15,6 @@ class User extends Authenticatable
   use HasApiTokens, HasFactory, Notifiable;
 
   /**
-   * The primary key associated with the table.
-   *
-   * @var string
-   */
-  protected $primaryKey = 'email';
-
-  /**
-   * Indicates if the model's ID is auto-incrementing.
-   *
-   * @var bool
-   */
-  public $incrementing = false;
-
-  /**
-   * The data type of the auto-incrementing ID.
-   *
-   * @var string
-   */
-  protected $keyType = 'string';
-
-  /**
    * The model's default values for attributes.
    *
    * @var array
@@ -95,6 +74,6 @@ class User extends Authenticatable
 
   public function application(): HasMany
   {
-    return $this->hasMany(Application::class, 'email');
+    return $this->hasMany(Application::class, 'user_id');
   }
 }
