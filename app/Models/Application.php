@@ -25,6 +25,7 @@ class Application extends Model
    */
   protected $attributes = [
     'application_delete' => false,
+    'application_status' => 'pending',
   ];
 
   /**

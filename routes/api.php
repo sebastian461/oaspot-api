@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
@@ -30,6 +31,11 @@ Route::post('login', [AuthController::class, 'login']);
 Route::middleware(['auth:sanctum'])->group(function () {
 
   /* Application */
+  Route::get('application', [ApplicationController::class, 'index']);
+  Route::post('application', [ApplicationController::class, 'store']);
+  Route::get('application/{id}', [ApplicationController::class, 'show']);
+  Route::put('application/{id}', [ApplicationController::class, 'update']);
+  Route::delete('application/{id}', [ApplicationController::class, 'destroy']);
 
   /* Authenticate */
   Route::post('logout', [AuthController::class, 'logout']);
