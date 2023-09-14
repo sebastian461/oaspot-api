@@ -72,8 +72,8 @@ class User extends Authenticatable
     return $this->belongsTo(Rol::class, 'rol_name');
   }
 
-  public function application(): HasMany
+  public function parking(): HasMany
   {
-    return $this->hasMany(Application::class, 'user_id');
+    return $this->hasMany(Parking::class, 'user_id');
   }
 }

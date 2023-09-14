@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('parking', function (Blueprint $table) {
             $table->bigIncrements('parking_id');
             $table->string('parking_name', 100);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('user')->onUpdate('cascade')->onDelete('cascade');
             $table->char('city_id', 7);
             $table->foreign('city_id')->references('city_id')->on('city')->onDelete('cascade');;
             $table->string('parking_address', 250);
