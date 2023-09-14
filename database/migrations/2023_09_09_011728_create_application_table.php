@@ -15,8 +15,6 @@ return new class extends Migration
       $table->bigIncrements('application_id');
       $table->unsignedBigInteger('parking_id');
       $table->foreign('parking_id')->references('parking_id')->on('parking')->onUpdate('cascade')->onDelete('cascade');
-      $table->unsignedBigInteger('user_id');
-      $table->foreign('user_id')->references('id')->on('user')->onUpdate('cascade')->onDelete('cascade');
       $table->enum('application_status', ['pending', 'success', 'approved']);
       $table->boolean('application_delete');
       $table->timestamps();

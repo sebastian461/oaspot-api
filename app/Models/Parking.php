@@ -35,6 +35,7 @@ class Parking extends Model
    */
   protected $fillable = [
     'parking_name',
+    'user_id',
     'city_id',
     'parking_address',
     'parking_description',
@@ -52,6 +53,11 @@ class Parking extends Model
   public function city(): BelongsTo
   {
     return $this->belongsTo(City::class, 'city_id');
+  }
+
+  public function user(): BelongsTo
+  {
+    return $this->belongsTo(User::class, 'user_id');
   }
 
   public function image(): HasMany
