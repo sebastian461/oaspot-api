@@ -6,6 +6,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +64,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::delete('image/{id}', [ImageController::class, 'destroy']);
 
   /* Parking */
+  Route::get('parking', [ParkingController::class, 'index']);
+  Route::post('parking', [ParkingController::class, 'store']);
+  Route::get('parking/{id}', [ParkingController::class, 'show']);
+  Route::put('parking/{id}', [ParkingController::class, 'update']);
+  Route::delete('parking/{id}', [ParkingController::class, 'destroy']);
 
   /* Person */
 
