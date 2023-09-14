@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+  return $request->user();
 });
 
 Route::post('register', [AuthController::class, 'register']);
@@ -25,12 +26,31 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    /* Authenticate */
-    Route::post('logout', [AuthController::class, 'logout']);
 
-    /* User */
-    Route::get('user', [UserController::class, 'index']);
-    Route::get('user/{id}', [UserController::class, 'show']);
-    Route::put('user/{id}', [UserController::class, 'update']);
-    Route::delete('user/{id}', [UserController::class, 'destroy']);
+  /* Application */
+
+  /* Authenticate */
+  Route::post('logout', [AuthController::class, 'logout']);
+  /* City */
+
+  /* Country */
+  Route::get('country', [CountryController::class, 'index']);
+  Route::post('country', [CountryController::class, 'store']);
+  Route::get('country/{id}', [CountryController::class, 'show']);
+
+  /* Document */
+
+  /* Image */
+
+  /* Parking */
+
+  /* Person */
+
+  /* Rol */
+
+  /* User */
+  Route::get('user', [UserController::class, 'index']);
+  Route::get('user/{id}', [UserController::class, 'show']);
+  Route::put('user/{id}', [UserController::class, 'update']);
+  Route::delete('user/{id}', [UserController::class, 'destroy']);
 });
