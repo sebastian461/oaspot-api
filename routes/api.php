@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -21,8 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   return $request->user();
 });
 
+/* Authenticate */
 Route::post('register', [AuthController::class, 'register']);
-
 Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -31,7 +32,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
   /* Authenticate */
   Route::post('logout', [AuthController::class, 'logout']);
+
   /* City */
+  Route::get('city', [CityController::class, 'index']);
+  Route::post('city', [CityController::class, 'store']);
+  Route::get('city/{id}', [CityController::class, 'show']);
 
   /* Country */
   Route::get('country', [CountryController::class, 'index']);
