@@ -39,11 +39,15 @@ class AuthController extends Controller
       'person_address' => $request->person_address
     ]);
 
+    $person->save();
+
     $user = User::create([
       'email' => $request->email,
       'person_cedula' => $request->person_cedula,
       'password' => Hash::make($request->password)
     ]);
+
+    $user->save();
 
     $token = $user->createToken('auth_token')->plainTextToken;
 
