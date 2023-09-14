@@ -7,6 +7,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ParkingController;
+use App\Http\Controllers\PersonController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -71,6 +72,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::delete('parking/{id}', [ParkingController::class, 'destroy']);
 
   /* Person */
+  Route::get('person', [PersonController::class, 'index']);
+  Route::post('person', [PersonController::class, 'store']);
+  Route::get('person/{id}', [PersonController::class, 'show']);
+  Route::put('person/{id}', [PersonController::class, 'update']);
+  Route::delete('person/{id}', [PersonController::class, 'destroy']);
 
   /* Rol */
 
